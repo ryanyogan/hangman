@@ -14,13 +14,13 @@ defmodule GameTest do
     for state <- [:won, :lost] do
       game = Game.new_game() |> Map.put(:game_state, state)
 
-      assert ^game = Game.make_move(game, "X")
+      assert {^game, _} = Game.make_move(game, "X")
     end
   end
 
   test "first occurrence of letter is not already used" do
     game = Game.new_game()
-    game = Game.make_move(game, "x")
+    {game, _tally} = Game.make_move(game, "x")
 
     assert game.game_state != :already_used
   end
@@ -28,16 +28,16 @@ defmodule GameTest do
   test "second occurrence of letter is not already used" do
     game = Game.new_game()
 
-    game = Game.make_move(game, "x")
+    {game, _tally} = Game.make_move(game, "x")
     assert game.game_state != :already_used
 
-    game = Game.make_move(game, "x")
+    {game, _tally} = Game.make_move(game, "x")
     assert game.game_state == :already_used
   end
 
   test "a good guess is recognized" do
     game = Game.new_game("wibble")
-    game = Game.make_move(game, "w")
+    {game, _tally} = Game.make_move(game, "w")
 
     assert game.game_state == :good_guess
     assert game.turns_left == 7
@@ -55,7 +55,7 @@ defmodule GameTest do
     game = Game.new_game("wibble")
 
     Enum.reduce(moves, game, fn {guess, game_state, turns_left}, game ->
-      game = Game.make_move(game, guess)
+      {game, _tally} = Game.make_move(game, guess)
       assert game.game_state == game_state
       assert game.turns_left == turns_left
       game
@@ -64,7 +64,7 @@ defmodule GameTest do
 
   test "bad guess is recognized" do
     game = Game.new_game("wibble")
-    game = Game.make_move(game, "x")
+    {game, _tally} = Game.make_move(game, "x")
 
     assert game.game_state == :bad_guess
     assert game.turns_left == 6
@@ -84,7 +84,7 @@ defmodule GameTest do
     game = Game.new_game("w")
 
     Enum.reduce(moves, game, fn {guess, state, turns_left}, game ->
-      game = Game.make_move(game, guess)
+      {game, _tally} = Game.make_move(game, guess)
       assert game.game_state == state
       assert game.turns_left == turns_left
       game
