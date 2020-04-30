@@ -1,6 +1,8 @@
 # Hangman
 
-**TODO: Add description**
+> When you are bored, why not re-make Hangman in Live-view?
+
+![Elixir CI](https://github.com/ryanyogan/hangman/workflows/Elixir%20CI/badge.svg?branch=master)
 
 ## Installation
 
@@ -18,4 +20,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/hangman](https://hexdocs.pm/hangman).
-
