@@ -19,7 +19,7 @@ defmodule Hangman.MixProject do
 
   defp deps do
     [
-      {:dictionary, github: "ryanyogan/dictionary"},
+      {:dictionary, github: "ryanyogan/dictionary", version: "0.2.0"},
       {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
