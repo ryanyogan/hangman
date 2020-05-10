@@ -32,8 +32,7 @@ defmodule Hangman.Game do
 
   @spec new_game :: Game.t()
   def new_game do
-    Dictionary.start()
-    |> Dictionary.random_word()
+    Dictionary.random_word()
     |> new_game()
   end
 

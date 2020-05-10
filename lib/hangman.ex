@@ -5,6 +5,7 @@ defmodule Hangman do
 
   def new_game() do
     {:ok, game} = DynamicSupervisor.start_child(Hangman.Supervisor, Hangman.Server)
+
     game
   end
 
