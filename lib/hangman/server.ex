@@ -5,7 +5,7 @@ defmodule Hangman.Server do
   use GenServer
 
   # This is our own API
-  def start_link() do
+  def start_link(_) do
     GenServer.start_link(@me, nil)
   end
 
